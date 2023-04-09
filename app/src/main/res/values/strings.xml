@@ -3,4 +3,17 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Language Preferences -->
+    <string name="pref_lang_title">Language</string>
+    <string name="pref_lang_en">English</string>
+    <string name="pref_lang_ru">Русский</string>
+
+    <!-- Notification Preferences -->
+    <string name="pref_notification_title">Note Notifications</string>
+    <string name="pref_notification_showAll">Show all</string>
+    <string name="pref_notification_disable">Disable</string>
+    <string name="pref_notification_selectEachTime">Select each time</string>
+
 </resources>

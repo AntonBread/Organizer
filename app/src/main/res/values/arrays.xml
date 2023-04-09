@@ -1,0 +1,25 @@
+<resources>
+    <!-- Language Preference -->
+    <string-array name="lang_entries">
+        <item>@string/pref_lang_en</item>
+        <item>@string/pref_lang_ru</item>
+    </string-array>
+
+    <string-array name="lang_values">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
+
+    <!-- Notification Preference -->
+    <string-array name="notification_entries">
+        <item>@string/pref_notification_selectEachTime</item>
+        <item>@string/pref_notification_showAll</item>
+        <item>@string/pref_notification_disable</item>
+    </string-array>
+
+    <string-array name="notification_values">
+        <item>select_each_time</item>
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+</resources>
