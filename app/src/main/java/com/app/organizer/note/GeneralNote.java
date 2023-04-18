@@ -67,18 +67,22 @@ public class GeneralNote implements INote {
         this.creationDateTime = creationDateTime;
     }
     
+    @Override
     public boolean create() {
         return true;
     }
     
+    @Override
     public boolean delete() {
         return true;
     }
     
+    @Override
     public boolean edit() {
         return true;
     }
     
+    @Override
     public boolean showNotification() {
         return true;
     }

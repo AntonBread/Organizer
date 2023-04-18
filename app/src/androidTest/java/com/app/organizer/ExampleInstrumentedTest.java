@@ -1,7 +1,6 @@
 package com.app.organizer;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -19,7 +18,6 @@ import com.app.organizer.note.GeneralNote;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
@@ -48,9 +46,9 @@ public class ExampleInstrumentedTest {
         note.addTag("Tag 3000");
         
         GeneralNoteEntity entity = note.toEntity();
-        db.generalDao().insert(entity);
+        db.generalNoteDao().insert(entity);
         
-        GeneralNote note2 = new GeneralNote(db.generalDao().getById(1));
+        GeneralNote note2 = new GeneralNote(db.generalNoteDao().getById(1));
         
         assertEquals(note.getTags().size(), note2.getTags().size());
         
@@ -66,13 +64,13 @@ public class ExampleInstrumentedTest {
         
         GeneralNoteEntity entity = new GeneralNoteEntity();
         entity.setName("Existing name");
-        db.generalDao().insert(entity);
+        db.generalNoteDao().insert(entity);
         
         GeneralNote noteUnique = new GeneralNote("New name", null, null, null);
         GeneralNote noteNonUnique = new GeneralNote("Existing name", null, null, null);
         
-        assertTrue(GeneralDatabaseManager.isNameUnique(db.generalDao(), noteUnique));
-        assertFalse(GeneralDatabaseManager.isNameUnique(db.generalDao(), noteNonUnique));
+        assertTrue(GeneralDatabaseManager.isNameUnique(db.generalNoteDao(), noteUnique));
+        assertFalse(GeneralDatabaseManager.isNameUnique(db.generalNoteDao(), noteNonUnique));
     }
     
     @Test
@@ -82,12 +80,12 @@ public class ExampleInstrumentedTest {
         
         GeneralNoteEntity entity = new GeneralNoteEntity();
         entity.setName("Old name");
-        entity.setId(db.generalDao().insert(entity));
+        entity.setId(db.generalNoteDao().insert(entity));
         
         entity.setName("Updated name");
-        db.generalDao().update(entity);
+        db.generalNoteDao().update(entity);
         
-        assertEquals(entity.getName(), db.generalDao().getById(1).getName());
+        assertEquals(entity.getName(), db.generalNoteDao().getById(1).getName());
     }
     
     @Test
@@ -97,10 +95,10 @@ public class ExampleInstrumentedTest {
         
         GeneralNoteEntity entity = new GeneralNoteEntity();
         entity.setName("Sample name");
-        entity.setId(db.generalDao().insert(entity));
+        entity.setId(db.generalNoteDao().insert(entity));
         
-        db.generalDao().delete(entity);
+        db.generalNoteDao().delete(entity);
         
-        assertNull(db.generalDao().getByName("Sample name"));
+        assertNull(db.generalNoteDao().getByName("Sample name"));
     }
 }

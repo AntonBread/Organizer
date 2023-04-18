@@ -25,12 +25,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        SharedPreferencesManager.logInstance();
+        
         settingsManager = SharedPreferencesManager.getInstance(getApplicationContext());
+    
+        SharedPreferencesManager.logInstance();
     
         Locale locale = settingsManager.getLocale();
         Log.d("DEBUG", locale.getLanguage());
         
         Log.d("DEBUG", Integer.toString(settingsManager.getNotificationsSettings()));
+        
+        settingsManager = SharedPreferencesManager.getInstance(getApplicationContext());
+    
+        SharedPreferencesManager.logInstance();
         
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

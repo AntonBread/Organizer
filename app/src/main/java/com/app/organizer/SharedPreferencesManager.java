@@ -2,6 +2,7 @@ package com.app.organizer;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
@@ -30,6 +31,11 @@ public class SharedPreferencesManager {
     
     private SharedPreferences getSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(appContext);
+    }
+    
+    public static void logInstance() {
+        String msg = (instance == null) ? "null" : instance.toString();
+        Log.d("CURRENT INSTANCE", msg);
     }
     
     public Locale getLocale() {
