@@ -1,5 +1,6 @@
 package com.app.organizer.note;
 
+import com.app.organizer.database.DatabaseMediator;
 import com.app.organizer.database.diary.TimeNoteEntity;
 
 import java.time.LocalDate;
@@ -14,6 +15,9 @@ public class TimeNote implements INote {
     private ArrayList<SubTimeNote> subNotes;
     private ArrayList<String> tags;
     private boolean notificationEnabled;
+    
+    @Deprecated
+    private DatabaseMediator databaseMediator;
     
     public TimeNote() {}
     
@@ -153,4 +157,12 @@ public class TimeNote implements INote {
         entity.setNotificationEnabled(this.notificationEnabled);
         return entity;
     }
+    
+    @Deprecated
+    public void setDatabaseMediator(DatabaseMediator databaseMediator) {
+        this.databaseMediator = databaseMediator;
+    }
+    
+    @Deprecated
+    public DatabaseMediator getDatabaseMediator() {return this.databaseMediator;}
 }
