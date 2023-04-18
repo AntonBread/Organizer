@@ -1,6 +1,7 @@
 package com.app.organizer;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -14,10 +15,14 @@ import static org.junit.Assert.*;
 import com.app.organizer.database.AppDatabase;
 import com.app.organizer.database.general.GeneralDatabaseManager;
 import com.app.organizer.database.general.GeneralNoteEntity;
+import com.app.organizer.database.goals.GoalNoteEntity;
 import com.app.organizer.note.GeneralNote;
+import com.app.organizer.note.GoalNote;
+import com.app.organizer.note.GoalStep;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
@@ -100,5 +105,32 @@ public class ExampleInstrumentedTest {
         db.generalNoteDao().delete(entity);
         
         assertNull(db.generalNoteDao().getByName("Sample name"));
+    }
+    
+    @Test
+    public void database_goal_note_test() {
+        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        AppDatabase db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
+        
+        ArrayList<GoalStep> steps = new ArrayList<>();
+        steps.add(new GoalStep("Step 1", "Secure the keys", LocalDateTime.now().toString()));
+        steps.add(new GoalStep("Step 2", "Ascend from darkness", LocalDateTime.now().plusMinutes(5).toString()));
+        steps.add(new GoalStep("Step 3", "Rain fire", LocalDateTime.now().plusMinutes(30).toString()));
+        
+        GoalNote note = new GoalNote("name", "desc", steps);
+        db.goalNoteDao().insert(note.toEntity());
+        
+        GoalNoteEntity entity = db.goalNoteDao().getById(1);
+        
+        Log.d("TEST", entity.getName());
+        Log.d("TEST", entity.getDescription());
+        assertEquals(entity.getName(), "name");
+        assertEquals(entity.getDescription(), "desc");
+        
+        ArrayList<GoalStep> entitySteps = entity.getSteps();
+        for (int i = 0; i < entitySteps.size(); i++) {
+            Log.d("TEST", entitySteps.get(i).toString());
+            assertEquals(entitySteps.get(i).toString(), steps.get(i).toString());
+        }
     }
 }

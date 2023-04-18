@@ -1,5 +1,7 @@
 package com.app.organizer.note;
 
+import com.app.organizer.database.goals.GoalNoteEntity;
+
 import java.util.ArrayList;
 
 public class GoalNote implements INote {
@@ -13,6 +15,12 @@ public class GoalNote implements INote {
         this.name = name;
         this.description = description;
         this.steps = steps;
+    }
+    
+    public GoalNote(GoalNoteEntity entity) {
+        this.name = entity.getName();
+        this.description = entity.getDescription();
+        this.steps = entity.getSteps();
     }
     
     public String getName() {
@@ -65,5 +73,13 @@ public class GoalNote implements INote {
     @Override
     public boolean showNotification() {
         return false;
+    }
+    
+    public GoalNoteEntity toEntity() {
+        GoalNoteEntity entity = new GoalNoteEntity();
+        entity.setName(this.name);
+        entity.setDescription(this.description);
+        entity.setSteps(this.steps);
+        return entity;
     }
 }

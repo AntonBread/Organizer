@@ -1,18 +1,19 @@
 package com.app.organizer.note;
 
-import java.time.LocalDateTime;
+import androidx.annotation.NonNull;
 
 public class GoalStep {
     private String title;
     private String description;
-    private LocalDateTime dateTime;
+    // String is used instead of LocalDateTime because gson can't serialize nested complex objects
+    private String dateTimeString;
     
     public GoalStep() {}
     
-    public GoalStep(String title, String description, LocalDateTime dateTime) {
+    public GoalStep(String title, String description, String dateTimeString) {
         this.title = title;
         this.description = description;
-        this.dateTime = dateTime;
+        this.dateTimeString = dateTimeString;
     }
     
     public String getTitle() {
@@ -23,8 +24,8 @@ public class GoalStep {
         return description;
     }
     
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public String getDateTimeString() {
+        return dateTimeString;
     }
     
     public void setTitle(String title) {
@@ -35,7 +36,13 @@ public class GoalStep {
         this.description = description;
     }
     
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDateTimeString(String dateTimeString) {
+        this.dateTimeString = dateTimeString;
+    }
+    
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("%s: %s, %s", title, description, dateTimeString);
     }
 }

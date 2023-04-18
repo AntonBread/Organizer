@@ -1,20 +1,22 @@
 package com.app.organizer.note;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalTime;
 
 public class SubTimeNote implements INote {
     private String name;
     private String description;
-    private LocalTime time;
+    // String is used instead of LocalTime because gson can't serialize nested complex objects
+    private String timeString;
     private boolean notificationEnabled;
     
     public SubTimeNote() {}
     
-    public SubTimeNote(String name, String description, LocalTime time, boolean notificationEnabled,
-                       TimeNote containerNote) {
+    public SubTimeNote(String name, String description, String timeString, boolean notificationEnabled) {
         this.name = name;
         this.description = description;
-        this.time = time;
+        this.timeString = timeString;
         this.notificationEnabled = notificationEnabled;
     }
     
@@ -26,8 +28,8 @@ public class SubTimeNote implements INote {
         return description;
     }
     
-    public LocalTime getTime() {
-        return time;
+    public String getTimeString() {
+        return timeString;
     }
     
     public boolean isNotificationEnabled() {
@@ -42,8 +44,8 @@ public class SubTimeNote implements INote {
         this.description = description;
     }
     
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setTimeString(String timeString) {
+        this.timeString = timeString;
     }
     
     public void setNotificationEnabled(boolean notificationEnabled) {
@@ -68,5 +70,11 @@ public class SubTimeNote implements INote {
     @Override
     public boolean showNotification() {
         return false;
+    }
+    
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("%s: %s, %s", name, description, timeString);
     }
 }
