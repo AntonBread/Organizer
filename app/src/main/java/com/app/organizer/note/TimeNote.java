@@ -1,5 +1,7 @@
 package com.app.organizer.note;
 
+import androidx.annotation.NonNull;
+
 import com.app.organizer.database.DatabaseMediator;
 import com.app.organizer.database.diary.TimeNoteEntity;
 
@@ -165,4 +167,10 @@ public class TimeNote implements INote {
     
     @Deprecated
     public DatabaseMediator getDatabaseMediator() {return this.databaseMediator;}
+    
+    @NonNull
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

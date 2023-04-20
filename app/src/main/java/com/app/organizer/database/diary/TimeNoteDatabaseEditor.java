@@ -15,6 +15,9 @@ public class TimeNoteDatabaseEditor implements DatabaseMediator {
     }
     
     public void add(AppDatabase db) {
+        if (timeNote == null) {
+            return;
+        }
         db.timeNoteDao().insert(timeNote.toEntity());
     }
 }

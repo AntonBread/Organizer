@@ -1,5 +1,7 @@
 package com.app.organizer.note;
 
+import androidx.annotation.NonNull;
+
 import com.app.organizer.database.general.GeneralNoteEntity;
 
 import java.time.LocalDateTime;
@@ -96,4 +98,9 @@ public class GeneralNote implements INote {
         return entity;
     }
     
+    @NonNull
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

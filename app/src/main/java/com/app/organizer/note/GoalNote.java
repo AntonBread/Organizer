@@ -1,5 +1,7 @@
 package com.app.organizer.note;
 
+import androidx.annotation.NonNull;
+
 import com.app.organizer.database.goals.GoalNoteEntity;
 
 import java.util.ArrayList;
@@ -81,5 +83,11 @@ public class GoalNote implements INote {
         entity.setDescription(this.description);
         entity.setSteps(this.steps);
         return entity;
+    }
+    
+    @NonNull
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

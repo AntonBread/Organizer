@@ -16,4 +16,7 @@
     <string name="pref_notification_disable">Disable</string>
     <string name="pref_notification_selectEachTime">Select each time</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
