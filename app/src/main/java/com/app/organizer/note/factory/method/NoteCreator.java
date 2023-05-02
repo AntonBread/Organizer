@@ -1,4 +1,4 @@
-package com.app.organizer.note.factory;
+package com.app.organizer.note.factory.method;
 
 import android.util.Log;
 

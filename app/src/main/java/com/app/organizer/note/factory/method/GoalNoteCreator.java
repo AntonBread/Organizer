@@ -1,4 +1,4 @@
-package com.app.organizer.note.factory;
+package com.app.organizer.note.factory.method;
 
 import com.app.organizer.note.GoalNote;
 import com.app.organizer.note.INote;

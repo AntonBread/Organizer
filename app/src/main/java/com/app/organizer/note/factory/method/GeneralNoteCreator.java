@@ -1,6 +1,4 @@
-package com.app.organizer.note.factory;
-
-import android.util.Log;
+package com.app.organizer.note.factory.method;
 
 import com.app.organizer.note.GeneralNote;
 import com.app.organizer.note.INote;

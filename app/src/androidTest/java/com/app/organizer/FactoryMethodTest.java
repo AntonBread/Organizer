@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 import com.app.organizer.note.GeneralNote;
 import com.app.organizer.note.GoalNote;
 import com.app.organizer.note.TimeNote;
-import com.app.organizer.note.factory.GeneralNoteCreator;
-import com.app.organizer.note.factory.GoalNoteCreator;
-import com.app.organizer.note.factory.NoteCreator;
-import com.app.organizer.note.factory.TimeNoteCreator;
+import com.app.organizer.note.factory.method.GeneralNoteCreator;
+import com.app.organizer.note.factory.method.GoalNoteCreator;
+import com.app.organizer.note.factory.method.NoteCreator;
+import com.app.organizer.note.factory.method.TimeNoteCreator;
 
 @RunWith(AndroidJUnit4.class)
 public class FactoryMethodTest {
