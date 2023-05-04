@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.app.organizer.database.AppDatabaseProxy;
+import com.app.organizer.database.DatabaseInterface;
 import com.app.organizer.database.diary.TimeNoteEntity;
 import com.app.organizer.note.TimeNote;
 
@@ -21,7 +22,7 @@ public class ProxyTest {
     @Test
     public void proxy_test() {
         Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        AppDatabaseProxy db = new AppDatabaseProxy(context);
+        DatabaseInterface db = new AppDatabaseProxy(context);
         Log.d("DATABASE OBJECT", db.toString());
     
         TimeNote note = new TimeNote("name", "description", LocalDate.now(), LocalTime.now(), null, null, true);

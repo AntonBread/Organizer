@@ -17,24 +17,24 @@ public class AppDatabaseProxy implements DatabaseInterface {
     }
     
     public GeneralNoteDao generalNoteDao() {
-        if (db == null) {
-            db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
-        }
+        createDBInstance();
         return db.generalNoteDao();
     }
     
     public TimeNoteDao timeNoteDao() {
-        if (db == null) {
-            db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
-        }
+        createDBInstance();
         return db.timeNoteDao();
     }
     
     public GoalNoteDao goalNoteDao() {
+        createDBInstance();
+        return db.goalNoteDao();
+    }
+    
+    private void createDBInstance() {
         if (db == null) {
             db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
         }
-        return db.goalNoteDao();
     }
     
     @Override
